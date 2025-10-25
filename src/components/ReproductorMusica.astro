@@ -564,8 +564,12 @@
   }
 </script> -->
 
+
 <script>
   import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
 
   let isPlaying = false;
   let currentTime = 0;
@@ -574,8 +578,20 @@
   document.addEventListener("DOMContentLoaded", () => {
     console.log("🎵 Iniciando reproductor...");
 
-    // 🔥 ANIMACIÓN AUTOMÁTICA SIN SCROLLTRIGGER
-    setTimeout(() => {
+    // 🎯 SCROLLTRIGGER CORREGIDO - Aparece al bajar y NO desaparece
+    ScrollTrigger.create({
+      trigger: "#music-player-container",
+      start: "top 90%", // Aparece cuando el top llega al 90% del viewport
+      once: true, // 🔥 CLAVE: Solo se ejecuta una vez, nunca desaparece
+
+      onEnter: () => {
+        console.log('🎵 ✨ Reproductor apareciendo...');
+        animatePlayerIn();
+      }
+    });
+
+    // 🌟 ANIMACIÓN DE ENTRADA ELEGANTE
+    function animatePlayerIn() {
       const tl = gsap.timeline();
 
       tl.fromTo("#music-player-container",
@@ -602,7 +618,7 @@
         { opacity: 0.8, duration: 0.4, ease: "power2.out" },
         "-=0.3"
       );
-    }, 1200); // Aparece 1.2 segundos después del hero
+    }
 
     // EVENT LISTENERS
     const playPauseBtn = document.getElementById("playPauseBtn");
@@ -641,6 +657,13 @@
         }
       });
     }
+
+    // 🔥 FORZAR REFRESH DE SCROLLTRIGGER EN MÓVILES
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 500);
+    });
   });
 
   // FUNCIÓN PLAY/PAUSE
