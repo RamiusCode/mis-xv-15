@@ -182,7 +182,7 @@
 </audio>
 
 <!-- SCRIPTS CON TIMING INTELIGENTE -->
-<script>
+<!-- <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -389,6 +389,317 @@
 
     if (!(audioElement instanceof HTMLAudioElement)) {
       console.log("No se encontró el elemento de audio");
+      return;
+    }
+
+    const audio = audioElement;
+
+    if (!isPlaying) {
+      audio.play().catch((error) => console.log("Error al reproducir:", error));
+
+      if (playIcon) playIcon.classList.add("hidden");
+      if (pauseIcon) pauseIcon.classList.remove("hidden");
+
+      gsap.to(heartBtn, {
+        scale: 1.2,
+        duration: 0.2,
+        yoyo: true,
+        repeat: 1,
+        ease: "power2.out",
+      });
+
+      createHeartParticles();
+
+      isPlaying = true;
+      startProgress();
+    } else {
+      audio.pause();
+
+      if (playIcon) playIcon.classList.remove("hidden");
+      if (pauseIcon) pauseIcon.classList.add("hidden");
+
+      isPlaying = false;
+    }
+  }
+
+  // CREAR PARTÍCULAS DE CORAZÓN
+  function createHeartParticles() {
+    const container = document.getElementById("heart-particles");
+    if (!container) return;
+
+    for (let i = 0; i < 6; i++) {
+      const particle = document.createElement("div");
+      particle.innerHTML = "💖";
+      particle.style.cssText = `
+      position: absolute;
+      font-size: 12px;
+      pointer-events: none;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+    `;
+
+      container.appendChild(particle);
+
+      gsap.to(particle, {
+        opacity: 1,
+        scale: 1.5,
+        x: (Math.random() - 0.5) * 100,
+        y: (Math.random() - 0.5) * 100,
+        rotation: Math.random() * 360,
+        duration: 0.8,
+        ease: "power2.out",
+        delay: i * 0.1,
+        onComplete: () => {
+          gsap.to(particle, {
+            opacity: 0,
+            scale: 0.5,
+            duration: 0.4,
+            onComplete: () => particle.remove(),
+          });
+        },
+      });
+    }
+  }
+
+  // FUNCIONES ADICIONALES
+  function previousTrack() {
+    console.log("Canción anterior");
+    gsap.to("#prevBtn", {
+      scale: 1.2,
+      duration: 0.1,
+      yoyo: true,
+      repeat: 1,
+    });
+  }
+
+  function nextTrack() {
+    console.log("Siguiente canción");
+    gsap.to("#nextBtn", {
+      scale: 1.2,
+      duration: 0.1,
+      yoyo: true,
+      repeat: 1,
+    });
+  }
+
+  function seekAudio() {
+    const progressBarElement = document.getElementById("progressBar");
+    const audioElement = document.getElementById("music-audio");
+
+    if (
+      progressBarElement instanceof HTMLInputElement &&
+      audioElement instanceof HTMLAudioElement
+    ) {
+      const value = Number(progressBarElement.value) || 0;
+      const seekTime = (value / 100) * audioElement.duration;
+
+      audioElement.currentTime = seekTime;
+      currentTime = seekTime;
+      updateTimeDisplay();
+    }
+  }
+
+  function startProgress() {
+    const audioElement = document.getElementById("music-audio");
+
+    if (!(audioElement instanceof HTMLAudioElement)) return;
+
+    const interval = setInterval(() => {
+      if (!isPlaying) {
+        clearInterval(interval);
+        return;
+      }
+
+      currentTime = audioElement.currentTime;
+      duration = audioElement.duration || duration;
+
+      if (currentTime >= duration) {
+        isPlaying = false;
+        const playIcon = document.getElementById("play-icon");
+        const pauseIcon = document.getElementById("pause-icon");
+        if (playIcon) playIcon.classList.remove("hidden");
+        if (pauseIcon) pauseIcon.classList.add("hidden");
+        clearInterval(interval);
+      }
+
+      updateProgress();
+    }, 100);
+  }
+
+  function updateProgress() {
+    const progressBarElement = document.getElementById("progressBar");
+
+    if (progressBarElement instanceof HTMLInputElement) {
+      const progressBar = progressBarElement;
+      const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
+      progressBar.value = progress.toString();
+    }
+    updateTimeDisplay();
+  }
+
+  function updateTimeDisplay() {
+    const currentTimeEl = document.getElementById("currentTime");
+    const totalDurationEl = document.getElementById("totalDuration");
+    const audioElement = document.getElementById("music-audio");
+
+    if (audioElement instanceof HTMLAudioElement) {
+      if (currentTimeEl) {
+        const minutes = Math.floor(audioElement.currentTime / 60);
+        const seconds = Math.floor(audioElement.currentTime % 60);
+        currentTimeEl.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
+      }
+
+      if (totalDurationEl && audioElement.duration) {
+        const totalMinutes = Math.floor(audioElement.duration / 60);
+        const totalSeconds = Math.floor(audioElement.duration % 60);
+        totalDurationEl.textContent = `${totalMinutes}:${totalSeconds.toString().padStart(2, "0")}`;
+      } else if (totalDurationEl && duration > 0) {
+        const totalMinutes = Math.floor(duration / 60);
+        const totalSeconds = Math.floor(duration % 60);
+        totalDurationEl.textContent = `${totalMinutes}:${totalSeconds.toString().padStart(2, "0")}`;
+      }
+    }
+  }
+</script> -->
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  let isPlaying = false;
+  let currentTime = 0;
+  let duration = 0;
+
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("🎵 Iniciando reproductor...");
+
+    // Configurar estado inicial (invisible)
+    gsap.set("#music-player-container", {
+      opacity: 0,
+      y: 50,
+      scale: 0.9,
+    });
+
+    // Configurar estado inicial de elementos internos
+    gsap.set("#player-title", { opacity: 0, y: 30 });
+    gsap.set("#controls-container", { opacity: 0, scale: 0.8 });
+    gsap.set("#progress-container", { opacity: 0, y: 20 });
+    gsap.set("#romantic-text", { opacity: 0 });
+
+    // 🎯 SCROLLTRIGGER CORREGIDO - Aparece y se queda visible
+    ScrollTrigger.create({
+      trigger: "#music-player-container",
+      start: "top 80%",
+      once: true, // Solo se ejecuta una vez
+
+      onEnter: () => {
+        console.log('🎵 ✨ Reproductor apareciendo...');
+        animatePlayerIn();
+      }
+    });
+
+    // 🌟 ANIMACIÓN DE ENTRADA ELEGANTE
+    function animatePlayerIn() {
+      const tl = gsap.timeline();
+
+      tl.to("#music-player-container", {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.8,
+        ease: "power3.out",
+      })
+        .to(
+          "#player-title",
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: "power2.out",
+          },
+          "-=0.4"
+        )
+        .to(
+          "#controls-container",
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.6,
+            ease: "back.out(1.5)",
+          },
+          "-=0.3"
+        )
+        .to(
+          "#progress-container",
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: "power2.out",
+          },
+          "-=0.4"
+        )
+        .to(
+          "#romantic-text",
+          {
+            opacity: 0.8,
+            duration: 0.4,
+            ease: "power2.out",
+          },
+          "-=0.3"
+        );
+    }
+
+    // EVENT LISTENERS
+    const playPauseBtn = document.getElementById("playPauseBtn");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const progressBar = document.getElementById("progressBar");
+
+    if (playPauseBtn) {
+      playPauseBtn.addEventListener("click", togglePlayPause);
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", previousTrack);
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", nextTrack);
+    }
+
+    if (progressBar) {
+      progressBar.addEventListener("input", seekAudio);
+    }
+
+    // OBTENER DURACIÓN REAL DEL AUDIO
+    const audioElement = document.getElementById("music-audio");
+    if (audioElement instanceof HTMLAudioElement) {
+      audioElement.addEventListener("loadedmetadata", () => {
+        duration = audioElement.duration;
+        updateTimeDisplay();
+      });
+
+      audioElement.addEventListener("canplaythrough", () => {
+        if (duration === 0 && audioElement.duration) {
+          duration = audioElement.duration;
+          updateTimeDisplay();
+        }
+      });
+    }
+  });
+
+  // FUNCIÓN PLAY/PAUSE
+  function togglePlayPause() {
+    const audioElement = document.getElementById("music-audio");
+    const playIcon = document.getElementById("play-icon");
+    const pauseIcon = document.getElementById("pause-icon");
+    const heartBtn = document.getElementById("playPauseBtn");
+
+    if (!(audioElement instanceof HTMLAudioElement)) {
       return;
     }
 
