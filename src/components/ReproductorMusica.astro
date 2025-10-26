@@ -1,11 +1,11 @@
 <!-- REPRODUCTOR DE MÚSICA CON TIMING INTELIGENTE -->
 <div
-  class="w-full max-w-[350px] sm:max-w-sm mx-auto mt-12 sm:mt-16 px-4"
+  class="w-full max-w-[350px] sm:max-w-sm mx-auto mt-12 sm:mt-16"
   id="music-player-container"
 >
   <!-- Card principal con efecto glass -->
   <div
-    class="bg-white/20 backdrop-blur-xl border border-white/30 rounded-3xl p-6 sm:p-8 shadow-lg relative overflow-hidden"
+    class="bg-white/20 backdrop-blur-xl border border-white/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden"
     id="player-card"
   >
     <!-- Efecto de brillo de fondo -->
@@ -28,21 +28,21 @@
       <div class="text-center mb-3" id="player-title">
         <div class="text-center z-30 mb-2 w-full" id="titulo-container">
           <div
-            class="flex items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8"
+            class="flex items-center justify-center gap-5 sm:gap-4 md:gap-6 lg:gap-8 px-4"
           >
             <!-- 🦋 MARIPOSA IZQUIERDA -->
             <div id="mariposa-izq" class="flex-shrink-0">
               <img
                 src="/gif/MariposaRoja.gif"
                 alt="Mariposa izquierda"
-                class="w-8 h-auto sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain"
+                class="w-12 h-auto sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain"
               />
             </div>
 
             <!-- TEXTO CENTRAL -->
-            <div id="titulo" class="flex-shrink min-w-0">
+            <div id="titulo" class="flex-shrink-0">
               <h3
-                class="font-great-vibes text-xl sm:text-2xl md:text-3xl text-[#95303a] mb-2"
+                class="font-great-vibes text-2xl sm:text-3xl text-[#95303a] mb-2"
               >
                 Mi Canción Especial
               </h3>
@@ -53,14 +53,14 @@
               <img
                 src="/gif/MariposaRoja.gif"
                 alt="Mariposa derecha"
-                class="w-8 h-auto sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain scale-x-[-1]"
+                class="w-12 h-auto sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain scale-x-[-1]"
               />
             </div>
           </div>
         </div>
         <p
           id="romantic-text"
-          class="text-xs sm:text-sm italic text-[#95303a]/70 font-medium w-full text-center px-2"
+          class="text-sm sm:text-base italic text-[#95303a]/70 font-medium w-full whitespace-nowrap"
         >
           ✨ Una melodía para recordar siempre ✨
         </p>
@@ -68,7 +68,7 @@
 
       <!-- Controles principales -->
       <div
-        class="flex items-center justify-center space-x-6 sm:space-x-10"
+        class="flex items-center justify-center space-x-8 sm:space-x-10"
         id="controls-container"
       >
         <!-- Botón anterior -->
@@ -211,13 +211,19 @@
     // 🎯 SCROLLTRIGGER MEJORADO - Aparece al bajar, NO desaparece al seguir bajando
     ScrollTrigger.create({
       trigger: "#music-player-container",
-      start: "top 100%",
-      end: "bottom 5%",
+      start: "top 95%",      // Aparece cuando entra al viewport
+      end: "bottom 5%",      // Desaparece solo cuando sale por arriba
 
       onEnter: () => {
         console.log('🎵 ✨ Reproductor apareciendo...');
         animatePlayerIn();
       },
+
+      // ❌ ELIMINADO - Ya no desaparece al bajar el scroll
+      // onLeave: () => {
+      //   console.log('🎵 👋 Usuario bajó demasiado, reproductor se oculta');
+      //   animatePlayerOut();
+      // },
 
       onEnterBack: () => {
         console.log('🎵 👆 Usuario regresó, reproductor visible');
@@ -228,6 +234,8 @@
         console.log('🎵 ⬆️ Reproductor desapareciendo elegantemente');
         animatePlayerOut();
       },
+
+      // markers: true, // 👈 Descomenta para ver los puntos de activación
     });
 
     // 🌟 ANIMACIÓN DE ENTRADA ELEGANTE
@@ -573,10 +581,9 @@
       rgba(255, 255, 255, 0.1)
     );
     border: 1px solid rgba(255, 255, 255, 0.4);
-    /* 🔥 SOMBRA SUAVE Y DELGADA - Cambio principal */
     box-shadow:
-      0 4px 12px rgba(0, 0, 0, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      0 25px 50px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
   }
 
   .slider-elegant {
@@ -596,14 +603,14 @@
     border-radius: 50%;
     background: linear-gradient(135deg, #95303a, #b83f52);
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(149, 48, 58, 0.3);
+    box-shadow: 0 4px 12px rgba(149, 48, 58, 0.4);
     border: 3px solid rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease;
   }
 
   .slider-elegant::-webkit-slider-thumb:hover {
     transform: scale(1.2);
-    box-shadow: 0 4px 12px rgba(149, 48, 58, 0.5);
+    box-shadow: 0 6px 16px rgba(149, 48, 58, 0.6);
   }
 
   .slider-elegant::-moz-range-thumb {
@@ -613,7 +620,7 @@
     background: linear-gradient(135deg, #95303a, #b83f52);
     cursor: pointer;
     border: 3px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 2px 8px rgba(149, 48, 58, 0.3);
+    box-shadow: 0 4px 12px rgba(149, 48, 58, 0.4);
   }
 
   @keyframes heartbeat {
@@ -669,4 +676,4 @@
       padding: 1.5rem;
     }
   }
-</style> todo bien
+</style>
