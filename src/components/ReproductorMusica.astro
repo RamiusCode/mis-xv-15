@@ -1,12 +1,12 @@
-<!-- REPRODUCTOR DE MÚSICA CON TIMING INTELIGENTE -->
+<!-- REPRODUCTOR DE MÚSICA OPTIMIZADO PARA MÓVIL Y VERCEL -->
 <div
   class="w-full max-w-[350px] sm:max-w-sm mx-auto mt-12 sm:mt-16"
-  id="music-player-container"
+  id="music-player-container-unique"
 >
   <!-- Card principal con efecto glass -->
   <div
     class="bg-white/20 backdrop-blur-xl border border-white/30 rounded-3xl p-6 sm:p-8 shadow-lg relative overflow-hidden"
-    id="player-card"
+    id="player-card-unique"
   >
     <!-- Efecto de brillo de fondo -->
     <div
@@ -25,13 +25,13 @@
     <!-- Contenido del reproductor -->
     <div class="relative z-10">
       <!-- Título elegante -->
-      <div class="text-center mb-3" id="player-title">
-        <div class="text-center z-30 mb-2 w-full" id="titulo-container">
+      <div class="text-center mb-3" id="player-title-unique">
+        <div class="text-center z-30 mb-2 w-full" id="titulo-container-unique">
           <div
             class="flex items-center justify-center gap-5 sm:gap-4 md:gap-6 lg:gap-8"
           >
             <!-- 🦋 MARIPOSA IZQUIERDA -->
-            <div id="mariposa-izq" class="flex-shrink-0">
+            <div id="mariposa-izq-unique" class="flex-shrink-0">
               <img
                 src="/gif/MariposaRoja.gif"
                 alt="Mariposa izquierda"
@@ -40,7 +40,7 @@
             </div>
 
             <!-- TEXTO CENTRAL -->
-            <div id="titulo" class="flex-shrink-0">
+            <div id="titulo-unique" class="flex-shrink-0">
               <h3
                 class="font-great-vibes text-2xl sm:text-3xl text-[#95303a] mb-2"
               >
@@ -49,7 +49,7 @@
             </div>
 
             <!-- 🦋 MARIPOSA DERECHA -->
-            <div id="mariposa-der" class="flex-shrink-0">
+            <div id="mariposa-der-unique" class="flex-shrink-0">
               <img
                 src="/gif/MariposaRoja.gif"
                 alt="Mariposa derecha"
@@ -59,7 +59,7 @@
           </div>
         </div>
         <p
-          id="romantic-text"
+          id="romantic-text-unique"
           class="text-sm sm:text-base italic text-[#95303a]/70 font-medium w-full"
         >
           ✨ Una melodía para recordar siempre ✨
@@ -69,11 +69,11 @@
       <!-- Controles principales -->
       <div
         class="flex items-center justify-center space-x-8 sm:space-x-10"
-        id="controls-container"
+        id="controls-container-unique"
       >
         <!-- Botón anterior -->
         <button
-          id="prevBtn"
+          id="prevBtn-unique"
           class="text-[#95303a]/60 hover:text-[#95303a] transition-all duration-300 text-xl sm:text-2xl p-3 rounded-full hover:bg-white/20 transform hover:scale-110 focus:outline-none"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -83,7 +83,7 @@
 
         <!-- Botón principal corazón -->
         <button
-          id="playPauseBtn"
+          id="playPauseBtn-unique"
           class="relative text-[#95303a] text-4xl sm:text-5xl transition-all duration-300 transform hover:scale-110 focus:outline-none group"
         >
           <!-- Fondo del botón corazón -->
@@ -109,7 +109,7 @@
             <!-- Icono play/pause superpuesto -->
             <div class="absolute inset-0 flex items-center justify-center">
               <svg
-                id="play-icon"
+                id="play-icon-unique"
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"
@@ -119,7 +119,7 @@
                 <path d="M8 5v14l11-7z"></path>
               </svg>
               <svg
-                id="pause-icon"
+                id="pause-icon-unique"
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"
@@ -134,14 +134,14 @@
           <!-- Partículas de corazón -->
           <div
             class="absolute inset-0 pointer-events-none"
-            id="heart-particles"
+            id="heart-particles-unique"
           >
           </div>
         </button>
 
         <!-- Botón siguiente -->
         <button
-          id="nextBtn"
+          id="nextBtn-unique"
           class="text-[#95303a]/60 hover:text-[#95303a] transition-all duration-300 text-xl sm:text-2xl p-3 rounded-full hover:bg-white/20 transform hover:scale-110 focus:outline-none"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -151,20 +151,20 @@
       </div>
 
       <!-- Barra de progreso elegante -->
-      <div class="px-2 sm:px-4" id="progress-container">
+      <div class="px-2 sm:px-4" id="progress-container-unique">
         <div
           class="flex items-center justify-between text-xs sm:text-sm text-[#95303a]/60 mb-3 font-medium"
         >
-          <span id="currentTime">0:00</span>
+          <span id="currentTime-unique">0:00</span>
           <span class="text-[#95303a]/40">♪</span>
-          <span id="totalDuration">--:--</span>
+          <span id="totalDuration-unique">--:--</span>
         </div>
 
         <!-- Barra de progreso personalizada -->
         <div class="relative">
           <input
             type="range"
-            id="progressBar"
+            id="progressBar-unique"
             value="0"
             max="100"
             class="w-full h-2 bg-gradient-to-r from-[#95303a]/20 to-[#95303a]/10 rounded-full appearance-none cursor-pointer slider-elegant"
@@ -176,12 +176,12 @@
 </div>
 
 <!-- Audio element -->
-<audio id="music-audio" preload="auto">
+<audio id="music-audio-unique" preload="auto">
   <source src="/audio/loscapos.mp3" type="audio/mpeg" />
   Tu navegador no soporta audio HTML5.
 </audio>
 
-<!-- SCRIPTS CON TIMING INTELIGENTE -->
+<!-- SCRIPTS OPTIMIZADOS PARA MÓVIL Y VERCEL -->
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -191,28 +191,54 @@
   let isPlaying = false;
   let currentTime = 0;
   let duration = 0;
+  let scrollTriggerInstance = null;
 
-  document.addEventListener("DOMContentLoaded", () => {
-    console.log("🎵 Iniciando reproductor con timing inteligente...");
+  // Detectar dispositivo móvil
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  // Configuración específica para móviles
+  if (isMobile) {
+    ScrollTrigger.config({
+      autoRefreshEvents: "visibilitychange,DOMContentLoaded,load,resize",
+      ignoreMobileResize: true
+    });
+  }
+
+  function initMusicPlayer() {
+    console.log("🎵 Iniciando reproductor optimizado para móvil...");
 
     // Configurar estado inicial (invisible)
-    gsap.set("#music-player-container", {
+    gsap.set("#music-player-container-unique", {
       opacity: 0,
       y: 50,
       scale: 0.9,
     });
 
     // Configurar estado inicial de elementos internos
-    gsap.set("#player-title", { opacity: 0, y: 30 });
-    gsap.set("#controls-container", { opacity: 0, scale: 0.8 });
-    gsap.set("#progress-container", { opacity: 0, y: 20 });
-    gsap.set("#romantic-text", { opacity: 0 });
+    gsap.set("#player-title-unique", { opacity: 0, y: 30 });
+    gsap.set("#controls-container-unique", { opacity: 0, scale: 0.8 });
+    gsap.set("#progress-container-unique", { opacity: 0, y: 20 });
+    gsap.set("#romantic-text-unique", { opacity: 0 });
 
-    // 🎯 SCROLLTRIGGER MEJORADO - Aparece al bajar, NO desaparece al seguir bajando
-    ScrollTrigger.create({
-      trigger: "#music-player-container",
-      start: "top 95%",
-      end: "bottom 5%",
+    // Destruir instancia anterior si existe
+    if (scrollTriggerInstance) {
+      scrollTriggerInstance.kill();
+    }
+
+    // 🎯 SCROLLTRIGGER OPTIMIZADO PARA MÓVIL
+    scrollTriggerInstance = ScrollTrigger.create({
+      trigger: "#music-player-container-unique",
+      start: "top 90%",
+      end: "bottom 10%",
+      
+      // Opciones para mejor rendimiento en móvil
+      invalidateOnRefresh: true,
+      anticipatePin: 1,
+      fastScrollEnd: true,
+      preventOverlaps: true,
+      
+      // Markers para debug (descomentar si necesitas)
+      // markers: true,
 
       onEnter: () => {
         console.log('🎵 ✨ Reproductor apareciendo...');
@@ -225,7 +251,7 @@
       },
 
       onLeaveBack: () => {
-        console.log('🎵 ⬆️ Reproductor desapareciendo elegantemente');
+        console.log('🎵 ⬆️ Reproductor desapareciendo');
         animatePlayerOut();
       },
     });
@@ -234,7 +260,7 @@
     function animatePlayerIn() {
       const tl = gsap.timeline();
 
-      tl.to("#music-player-container", {
+      tl.to("#music-player-container-unique", {
         opacity: 1,
         y: 0,
         scale: 1,
@@ -242,7 +268,7 @@
         ease: "power3.out",
       })
         .to(
-          "#player-title",
+          "#player-title-unique",
           {
             opacity: 1,
             y: 0,
@@ -252,7 +278,7 @@
           "-=0.4"
         )
         .to(
-          "#controls-container",
+          "#controls-container-unique",
           {
             opacity: 1,
             scale: 1,
@@ -262,7 +288,7 @@
           "-=0.3"
         )
         .to(
-          "#progress-container",
+          "#progress-container-unique",
           {
             opacity: 1,
             y: 0,
@@ -272,7 +298,7 @@
           "-=0.4"
         )
         .to(
-          "#romantic-text",
+          "#romantic-text-unique",
           {
             opacity: 0.8,
             duration: 0.4,
@@ -286,13 +312,13 @@
     function animatePlayerOut() {
       const tl = gsap.timeline();
 
-      tl.to("#romantic-text", {
+      tl.to("#romantic-text-unique", {
         opacity: 0,
         duration: 0.3,
         ease: "power2.in",
       })
         .to(
-          "#progress-container",
+          "#progress-container-unique",
           {
             opacity: 0,
             y: 20,
@@ -302,7 +328,7 @@
           "-=0.2"
         )
         .to(
-          "#controls-container",
+          "#controls-container-unique",
           {
             opacity: 0,
             scale: 0.8,
@@ -312,7 +338,7 @@
           "-=0.3"
         )
         .to(
-          "#player-title",
+          "#player-title-unique",
           {
             opacity: 0,
             y: 30,
@@ -322,7 +348,7 @@
           "-=0.3"
         )
         .to(
-          "#music-player-container",
+          "#music-player-container-unique",
           {
             opacity: 0,
             y: 50,
@@ -335,10 +361,10 @@
     }
 
     // EVENT LISTENERS
-    const playPauseBtn = document.getElementById("playPauseBtn");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const progressBar = document.getElementById("progressBar");
+    const playPauseBtn = document.getElementById("playPauseBtn-unique");
+    const prevBtn = document.getElementById("prevBtn-unique");
+    const nextBtn = document.getElementById("nextBtn-unique");
+    const progressBar = document.getElementById("progressBar-unique");
 
     if (playPauseBtn) {
       playPauseBtn.addEventListener("click", togglePlayPause);
@@ -357,7 +383,7 @@
     }
 
     // OBTENER DURACIÓN REAL DEL AUDIO
-    const audioElement = document.getElementById("music-audio");
+    const audioElement = document.getElementById("music-audio-unique");
     if (audioElement instanceof HTMLAudioElement) {
       audioElement.addEventListener("loadedmetadata", () => {
         duration = audioElement.duration;
@@ -378,14 +404,14 @@
         }
       });
     }
-  });
+  }
 
   // FUNCIÓN PLAY/PAUSE
   function togglePlayPause() {
-    const audioElement = document.getElementById("music-audio");
-    const playIcon = document.getElementById("play-icon");
-    const pauseIcon = document.getElementById("pause-icon");
-    const heartBtn = document.getElementById("playPauseBtn");
+    const audioElement = document.getElementById("music-audio-unique");
+    const playIcon = document.getElementById("play-icon-unique");
+    const pauseIcon = document.getElementById("pause-icon-unique");
+    const heartBtn = document.getElementById("playPauseBtn-unique");
 
     if (!(audioElement instanceof HTMLAudioElement)) {
       console.log("No se encontró el elemento de audio");
@@ -424,7 +450,7 @@
 
   // CREAR PARTÍCULAS DE CORAZÓN
   function createHeartParticles() {
-    const container = document.getElementById("heart-particles");
+    const container = document.getElementById("heart-particles-unique");
     if (!container) return;
 
     for (let i = 0; i < 6; i++) {
@@ -466,7 +492,7 @@
   // FUNCIONES ADICIONALES
   function previousTrack() {
     console.log("Canción anterior");
-    gsap.to("#prevBtn", {
+    gsap.to("#prevBtn-unique", {
       scale: 1.2,
       duration: 0.1,
       yoyo: true,
@@ -476,7 +502,7 @@
 
   function nextTrack() {
     console.log("Siguiente canción");
-    gsap.to("#nextBtn", {
+    gsap.to("#nextBtn-unique", {
       scale: 1.2,
       duration: 0.1,
       yoyo: true,
@@ -485,8 +511,8 @@
   }
 
   function seekAudio() {
-    const progressBarElement = document.getElementById("progressBar");
-    const audioElement = document.getElementById("music-audio");
+    const progressBarElement = document.getElementById("progressBar-unique");
+    const audioElement = document.getElementById("music-audio-unique");
 
     if (
       progressBarElement instanceof HTMLInputElement &&
@@ -502,7 +528,7 @@
   }
 
   function startProgress() {
-    const audioElement = document.getElementById("music-audio");
+    const audioElement = document.getElementById("music-audio-unique");
 
     if (!(audioElement instanceof HTMLAudioElement)) return;
 
@@ -517,8 +543,8 @@
 
       if (currentTime >= duration) {
         isPlaying = false;
-        const playIcon = document.getElementById("play-icon");
-        const pauseIcon = document.getElementById("pause-icon");
+        const playIcon = document.getElementById("play-icon-unique");
+        const pauseIcon = document.getElementById("pause-icon-unique");
         if (playIcon) playIcon.classList.remove("hidden");
         if (pauseIcon) pauseIcon.classList.add("hidden");
         clearInterval(interval);
@@ -529,7 +555,7 @@
   }
 
   function updateProgress() {
-    const progressBarElement = document.getElementById("progressBar");
+    const progressBarElement = document.getElementById("progressBar-unique");
 
     if (progressBarElement instanceof HTMLInputElement) {
       const progressBar = progressBarElement;
@@ -540,9 +566,9 @@
   }
 
   function updateTimeDisplay() {
-    const currentTimeEl = document.getElementById("currentTime");
-    const totalDurationEl = document.getElementById("totalDuration");
-    const audioElement = document.getElementById("music-audio");
+    const currentTimeEl = document.getElementById("currentTime-unique");
+    const totalDurationEl = document.getElementById("totalDuration-unique");
+    const audioElement = document.getElementById("music-audio-unique");
 
     if (audioElement instanceof HTMLAudioElement) {
       if (currentTimeEl) {
@@ -562,10 +588,32 @@
       }
     }
   }
+
+  // INICIALIZACIÓN CON MÚLTIPLES EVENTOS
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMusicPlayer);
+  } else {
+    initMusicPlayer();
+  }
+
+  // Refresh después de que todo cargue (importante para Vercel)
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+      console.log("🔄 ScrollTrigger refreshed después de cargar");
+    }, 100);
+  });
+
+  // Cleanup al salir
+  window.addEventListener('beforeunload', () => {
+    if (scrollTriggerInstance) {
+      scrollTriggerInstance.kill();
+    }
+  });
 </script>
 
 <style>
-  #player-card {
+  #player-card-unique {
     backdrop-filter: blur(25px);
     background: linear-gradient(
       135deg,
@@ -631,15 +679,15 @@
     }
   }
 
-  #playPauseBtn:hover {
+  #playPauseBtn-unique:hover {
     animation: heartbeat 1.5s ease-in-out infinite;
   }
 
-  button:not(#playPauseBtn):hover {
+  button:not(#playPauseBtn-unique):hover {
     transform: translateY(-2px) scale(1.05);
   }
 
-  #player-card::before {
+  #player-card-unique::before {
     content: "";
     position: absolute;
     top: -2px;
@@ -658,12 +706,12 @@
     transition: opacity 0.3s ease;
   }
 
-  #player-card:hover::before {
+  #player-card-unique:hover::before {
     opacity: 1;
   }
 
   @media (max-width: 640px) {
-    #player-card {
+    #player-card-unique {
       margin: 1rem;
       padding: 1.5rem;
     }
