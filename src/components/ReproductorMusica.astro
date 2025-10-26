@@ -1,202 +1,123 @@
-<!-- REPRODUCTOR DE MÚSICA OPTIMIZADO PARA MÓVIL Y VERCEL -->
-<div
-  class="w-full max-w-[350px] sm:max-w-sm mx-auto mt-12 sm:mt-16"
-  id="music-player-container-unique"
->
-  <!-- Card principal con efecto glass -->
-  <div
-    class="bg-white/20 backdrop-blur-xl border border-white/30 rounded-3xl p-6 sm:p-8 shadow-lg relative overflow-hidden"
-    id="player-card-unique"
-  >
-    <!-- Efecto de brillo de fondo -->
-    <div
-      class="absolute inset-0 bg-gradient-to-br from-[#95303a]/10 via-transparent to-[#95303a]/5 pointer-events-none"
-    >
-    </div>
-    <div
-      class="absolute -top-20 -right-20 w-40 h-40 bg-[#95303a]/10 rounded-full blur-3xl pointer-events-none"
-    >
-    </div>
-    <div
-      class="absolute -bottom-20 -left-20 w-32 h-32 bg-[#95303a]/8 rounded-full blur-3xl pointer-events-none"
-    >
-    </div>
+<section class="relative bg-white text-black w-full">
 
-    <!-- Contenido del reproductor -->
-    <div class="relative z-10">
-      <!-- Título elegante -->
-      <div class="text-center mb-3" id="player-title-unique">
-        <div class="text-center z-30 mb-2 w-full" id="titulo-container-unique">
-          <div
-            class="flex items-center justify-center gap-5 sm:gap-4 md:gap-6 lg:gap-8"
+  <!-- ===== FLORES ARRIBA - FULL WIDTH ===== -->
+  <div class="relative w-full" id="flores-arriba-hero">
+    <img
+      src="/imagenes/FloresArriba.webp"
+      alt="Flores decorativas"
+      class="w-full h-auto object-cover object-center block"
+    />
+
+    <!-- CORONA CENTRADA SOBRE LAS FLORES -->
+    <div
+      class="absolute left-1/2 transform -translate-x-1/2 top-[100px] sm:top-16 md:top-12 lg:top-8 xl:top-4 z-50"
+      id="corona-hero"
+    >
+      <img
+        src="/imagenes/Corona.webp"
+        alt="Corona de quinceañera"
+        class="w-24 h-auto sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 object-contain mx-auto"
+      />
+    </div>
+  </div>
+
+  <!-- ===== CONTENIDO CENTRAL ===== -->
+  <div class="relative w-full sm:pt-40 md:pt-48">
+    <div class="flex justify-center w-full">
+      <div class="text-center z-10 max-w-4xl w-full">
+
+        <!-- TEXTO: MIS XV AÑOS -->
+        <div class="relative text-center z-30 mb-8 w-full" id="titulo-container-hero">
+          <h1
+            class="font-crimson text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-[#95303a] font-bold tracking-wider whitespace-nowrap"
+            id="titulo-hero"
           >
-            <!-- 🦋 MARIPOSA IZQUIERDA -->
-            <div id="mariposa-izq-unique" class="flex-shrink-0">
-              <img
-                src="/gif/MariposaRoja.gif"
-                alt="Mariposa izquierda"
-                class="w-12 h-auto sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain"
-              />
-            </div>
-
-            <!-- TEXTO CENTRAL -->
-            <div id="titulo-unique" class="flex-shrink-0">
-              <h3
-                class="font-great-vibes text-2xl sm:text-3xl text-[#95303a] mb-2"
-              >
-                Mi Canción Especial
-              </h3>
-            </div>
-
-            <!-- 🦋 MARIPOSA DERECHA -->
-            <div id="mariposa-der-unique" class="flex-shrink-0">
-              <img
-                src="/gif/MariposaRoja.gif"
-                alt="Mariposa derecha"
-                class="w-12 h-auto sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain scale-x-[-1]"
-              />
-            </div>
-          </div>
+            MIS XV AÑOS
+          </h1>
         </div>
-        <p
-          id="romantic-text-unique"
-          class="text-sm sm:text-base italic text-[#95303a]/70 font-medium w-full"
-        >
-          ✨ Una melodía para recordar siempre ✨
-        </p>
-      </div>
 
-      <!-- Controles principales -->
-      <div
-        class="flex items-center justify-center space-x-8 sm:space-x-10"
-        id="controls-container-unique"
-      >
-        <!-- Botón anterior -->
-        <button
-          id="prevBtn-unique"
-          class="text-[#95303a]/60 hover:text-[#95303a] transition-all duration-300 text-xl sm:text-2xl p-3 rounded-full hover:bg-white/20 transform hover:scale-110 focus:outline-none"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M7 6v12l-2-2V8l2-2zm2 6l8-5v10l-8-5z"></path>
-          </svg>
-        </button>
-
-        <!-- Botón principal corazón -->
-        <button
-          id="playPauseBtn-unique"
-          class="relative text-[#95303a] text-4xl sm:text-5xl transition-all duration-300 transform hover:scale-110 focus:outline-none group"
-        >
-          <!-- Fondo del botón corazón -->
-          <div
-            class="absolute inset-0 bg-gradient-to-br from-[#95303a]/20 to-[#95303a]/10 rounded-full blur-lg scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          >
-          </div>
-
-          <!-- Icono corazón -->
-          <div class="relative z-10 transform transition-all duration-300">
-            <svg
-              width="48"
-              height="48"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              class="drop-shadow-lg"
-            >
-              <path
-                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-              ></path>
-            </svg>
-
-            <!-- Icono play/pause superpuesto -->
-            <div class="absolute inset-0 flex items-center justify-center">
-              <svg
-                id="play-icon-unique"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="white"
-                class="drop-shadow-sm"
-              >
-                <path d="M8 5v14l11-7z"></path>
-              </svg>
-              <svg
-                id="pause-icon-unique"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="white"
-                class="hidden drop-shadow-sm"
-              >
-                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"></path>
-              </svg>
-            </div>
-          </div>
-
-          <!-- Partículas de corazón -->
-          <div
-            class="absolute inset-0 pointer-events-none"
-            id="heart-particles-unique"
-          >
-          </div>
-        </button>
-
-        <!-- Botón siguiente -->
-        <button
-          id="nextBtn-unique"
-          class="text-[#95303a]/60 hover:text-[#95303a] transition-all duration-300 text-xl sm:text-2xl p-3 rounded-full hover:bg-white/20 transform hover:scale-110 focus:outline-none"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M17 18V6l2 2v8l-2 2zm-2-6L7 7v10l8-5z"></path>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Barra de progreso elegante -->
-      <div class="px-2 sm:px-4" id="progress-container-unique">
+        <!-- NOMBRE CON MARIPOSAS A LOS LADOS -->
         <div
-          class="flex items-center justify-between text-xs sm:text-sm text-[#95303a]/60 mb-3 font-medium"
+          class="flex items-center justify-center gap-8 sm:gap-16 md:gap-24 lg:gap-32 px-4 mb-12"
+          id="nombre-container-hero"
         >
-          <span id="currentTime-unique">0:00</span>
-          <span class="text-[#95303a]/40">♪</span>
-          <span id="totalDuration-unique">--:--</span>
+          <!-- MARIPOSA IZQUIERDA -->
+          <div id="mariposa-izq-hero" class="flex-shrink-0">
+            <img
+              src="/gif/MariposaRoja.gif"
+              alt="Mariposa izquierda"
+              class="w-12 h-auto sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain"
+            />
+          </div>
+
+          <!-- NOMBRE -->
+          <h2
+            class="font-great-vibes text-7xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#a27735] tracking-wide whitespace-nowrap"
+            id="nombre-typewriter-hero"
+          ></h2>
+
+          <!-- MARIPOSA DERECHA -->
+          <div id="mariposa-der-hero" class="flex-shrink-0">
+            <img
+              src="/gif/MariposaRoja.gif"
+              alt="Mariposa derecha"
+              class="w-12 h-auto sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain scale-x-[-1]"
+            />
+          </div>
         </div>
 
-        <!-- Barra de progreso personalizada -->
-        <div class="relative">
-          <input
-            type="range"
-            id="progressBar-unique"
-            value="0"
-            max="100"
-            class="w-full h-2 bg-gradient-to-r from-[#95303a]/20 to-[#95303a]/10 rounded-full appearance-none cursor-pointer slider-elegant"
-          />
+        <!-- ===== IMAGEN PRINCIPAL CON FLORES LATERALES ===== -->
+        <div class="relative w-full" id="foto-container-hero">
+          <!-- FLORES IZQUIERDA -->
+          <div id="flores-foto-izq-hero" class="absolute left-0 top-48 sm:top-40 md:top-32 lg:top-24 flex-shrink-0 z-30">
+            <img
+              src="/imagenes/FloresIzquierda.webp"
+              alt="Flores izquierda"
+              class="w-12 h-auto sm:w-12 md:w-16 lg:w-20 object-contain"
+            />
+          </div>
+
+          <!-- FLORES DERECHA -->
+          <div id="flores-foto-der-hero" class="absolute right-0 top-48 sm:top-40 md:top-32 lg:top-24 flex-shrink-0 z-30">
+            <img
+              src="/imagenes/FloresDerecha.webp"
+              alt="Flores derecha"
+              class="w-12 h-auto sm:w-12 md:w-16 lg:w-20 object-contain"
+            />
+          </div>
+
+          <!-- IMAGEN DE LA QUINCEAÑERA -->
+          <div class="relative flex justify-center">
+            <img
+              src="/imagenes/Quinceañera.webp"
+              alt="Foto de quinceañera"
+              class="w-[70vw] max-w-none h-auto sm:w-[95vw] md:w-[85vw] lg:w-[70vw] xl:w-[55vw] object-contain"
+              id="foto-quinceañera-hero"
+            />
+          </div>
         </div>
+
       </div>
     </div>
   </div>
-</div>
 
-<!-- Audio element -->
-<audio id="music-audio-unique" preload="auto">
-  <source src="/audio/loscapos.mp3" type="audio/mpeg" />
-  Tu navegador no soporta audio HTML5.
-</audio>
+</section>
 
-<!-- SCRIPTS OPTIMIZADOS PARA MÓVIL Y VERCEL -->
+<!-- ===== ANIMACIONES GSAP OPTIMIZADAS PARA MÓVIL ===== -->
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   gsap.registerPlugin(ScrollTrigger);
 
-  let isPlaying = false;
-  let currentTime = 0;
-  let duration = 0;
-  let scrollTriggerInstance = null;
+  let heroScrollTrigger = null;
+  let flowerAnimations = [];
+  let butterflyAnimations = [];
 
-  // Detectar dispositivo móvil
+  // Detectar móvil
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-  // Configuración específica para móviles
+  // Configuración para móviles
   if (isMobile) {
     ScrollTrigger.config({
       autoRefreshEvents: "visibilitychange,DOMContentLoaded,load,resize",
@@ -204,516 +125,242 @@
     });
   }
 
-  function initMusicPlayer() {
-    console.log("🎵 Iniciando reproductor optimizado para móvil...");
+  function initHeroAnimations() {
+    console.log("✨ Iniciando animaciones del Hero optimizadas para móvil...");
 
-    // Configurar estado inicial (invisible)
-    gsap.set("#music-player-container-unique", {
-      opacity: 0,
-      y: 50,
-      scale: 0.9,
-    });
-
-    // Configurar estado inicial de elementos internos
-    gsap.set("#player-title-unique", { opacity: 0, y: 30 });
-    gsap.set("#controls-container-unique", { opacity: 0, scale: 0.8 });
-    gsap.set("#progress-container-unique", { opacity: 0, y: 20 });
-    gsap.set("#romantic-text-unique", { opacity: 0 });
-
-    // Destruir instancia anterior si existe
-    if (scrollTriggerInstance) {
-      scrollTriggerInstance.kill();
+    // Destruir animaciones anteriores si existen
+    if (heroScrollTrigger) {
+      heroScrollTrigger.kill();
     }
+    flowerAnimations.forEach(anim => anim.kill());
+    butterflyAnimations.forEach(anim => anim.kill());
+    flowerAnimations = [];
+    butterflyAnimations = [];
 
-    // 🎯 SCROLLTRIGGER OPTIMIZADO PARA MÓVIL
-    scrollTriggerInstance = ScrollTrigger.create({
-      trigger: "#music-player-container-unique",
-      start: "top 90%",
-      end: "bottom 10%",
-      
-      // Opciones para mejor rendimiento en móvil
-      invalidateOnRefresh: true,
-      anticipatePin: 1,
-      fastScrollEnd: true,
-      preventOverlaps: true,
-      
-      // Markers para debug (descomentar si necesitas)
-      // markers: true,
+    // Configurar estado inicial de todos los elementos
+    gsap.set("#flores-arriba-hero", { opacity: 0 });
+    gsap.set("#corona-hero", { opacity: 0, scale: 0.5 });
+    gsap.set("#titulo-hero", { opacity: 0, y: 30 });
+    gsap.set("#mariposa-izq-hero", { opacity: 0, x: -50, y: 20, rotation: -15, scale: 0.8 });
+    gsap.set("#mariposa-der-hero", { opacity: 0, x: 50, y: 20, rotation: 15, scale: 0.8 });
+    gsap.set("#nombre-typewriter-hero", { opacity: 0 });
+    gsap.set("#flores-foto-izq-hero", { opacity: 0, x: -150 });
+    gsap.set("#flores-foto-der-hero", { opacity: 0, x: 150 });
+    gsap.set("#foto-container-hero", { opacity: 0, scale: 0.8, y: 30 });
 
-      onEnter: () => {
-        console.log('🎵 ✨ Reproductor apareciendo...');
-        animatePlayerIn();
-      },
-
-      onEnterBack: () => {
-        console.log('🎵 👆 Usuario regresó, reproductor visible');
-        animatePlayerIn();
-      },
-
-      onLeaveBack: () => {
-        console.log('🎵 ⬆️ Reproductor desapareciendo');
-        animatePlayerOut();
-      },
-    });
-
-    // 🌟 ANIMACIÓN DE ENTRADA ELEGANTE
-    function animatePlayerIn() {
+    // FUNCIÓN PRINCIPAL DE ANIMACIÓN
+    function animateHeroIn() {
       const tl = gsap.timeline();
 
-      tl.to("#music-player-container-unique", {
+      // 1. FLORES ARRIBA - Fade in
+      tl.to("#flores-arriba-hero", {
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out"
+      });
+
+      // 2. CORONA - Zoom in
+      tl.to("#corona-hero", {
+        opacity: 1,
+        scale: 1,
+        duration: 1.2,
+        ease: "back.out(1.2)"
+      }, "-=0.7");
+
+      // 3. TÍTULO - Fade in de arriba
+      tl.to("#titulo-hero", {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out"
+      }, "-=0.5");
+
+      // 4. MARIPOSAS - Llegan de los lados
+      tl.to("#mariposa-izq-hero", {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        rotation: 0,
+        scale: 1,
+        duration: 1.5,
+        ease: "power2.out"
+      }, "-=0.8");
+
+      tl.to("#mariposa-der-hero", {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        rotation: 0,
+        scale: 1,
+        duration: 1.5,
+        ease: "power2.out"
+      }, "-=1.5");
+
+      // 5. NOMBRE - Efecto cascada
+      tl.add(() => {
+        nombreCascadaElegante();
+      }, "-=1");
+
+      // 6. FLORES LATERALES
+      tl.to("#flores-foto-izq-hero", {
+        opacity: 1,
+        x: 0,
+        duration: 1.5,
+        ease: "power2.out"
+      }, "-=1.2");
+
+      tl.to("#flores-foto-der-hero", {
+        opacity: 1,
+        x: 0,
+        duration: 1.5,
+        ease: "power2.out"
+      }, "-=1.5");
+
+      // 7. FOTO PRINCIPAL
+      tl.to("#foto-container-hero", {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        duration: 1.2,
+        ease: "power2.out"
+      }, "-=1");
+
+      // 8. ANIMACIONES CONTINUAS DE MARIPOSAS (solo después de entrar)
+      tl.add(() => {
+        startButterflyFloating();
+      });
+    }
+
+    // ANIMACIONES FLOTANTES DE MARIPOSAS
+    function startButterflyFloating() {
+      // Mariposa izquierda - Flotado vertical
+      const anim1 = gsap.to("#mariposa-izq-hero", {
+        y: -12,
+        rotation: 3,
+        duration: 3,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1
+      });
+
+      // Mariposa izquierda - Flotado horizontal
+      const anim2 = gsap.to("#mariposa-izq-hero", {
+        x: 10,
+        duration: 4,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1
+      });
+
+      // Mariposa derecha - Flotado vertical
+      const anim3 = gsap.to("#mariposa-der-hero", {
+        y: -12,
+        rotation: -3,
+        duration: 3,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1
+      });
+
+      // Mariposa derecha - Flotado horizontal
+      const anim4 = gsap.to("#mariposa-der-hero", {
+        x: -10,
+        duration: 4,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1
+      });
+
+      butterflyAnimations.push(anim1, anim2, anim3, anim4);
+    }
+
+    // NOMBRE CON EFECTO CASCADA
+    function nombreCascadaElegante() {
+      const texto = "Lucia";
+      const contenedor = document.getElementById("nombre-typewriter-hero");
+      if (!contenedor) return;
+
+      contenedor.innerHTML = texto
+        .split("")
+        .map(
+          (letra, index) =>
+            `<span class="letra-cascada-hero" style="
+                opacity: 0; 
+                display: inline-block; 
+                transform: translateY(30px) scale(0.8);
+                filter: blur(2px);
+            ">${letra}</span>`
+        )
+        .join("");
+
+      gsap.to(".letra-cascada-hero", {
         opacity: 1,
         y: 0,
         scale: 1,
+        filter: "blur(0px)",
         duration: 0.8,
-        ease: "power3.out",
-      })
-        .to(
-          "#player-title-unique",
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            ease: "power2.out",
-          },
-          "-=0.4"
-        )
-        .to(
-          "#controls-container-unique",
-          {
-            opacity: 1,
-            scale: 1,
-            duration: 0.6,
-            ease: "back.out(1.5)",
-          },
-          "-=0.3"
-        )
-        .to(
-          "#progress-container-unique",
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            ease: "power2.out",
-          },
-          "-=0.4"
-        )
-        .to(
-          "#romantic-text-unique",
-          {
-            opacity: 0.8,
-            duration: 0.4,
-            ease: "power2.out",
-          },
-          "-=0.3"
-        );
-    }
-
-    // 💫 ANIMACIÓN DE SALIDA ELEGANTE
-    function animatePlayerOut() {
-      const tl = gsap.timeline();
-
-      tl.to("#romantic-text-unique", {
-        opacity: 0,
-        duration: 0.3,
-        ease: "power2.in",
-      })
-        .to(
-          "#progress-container-unique",
-          {
-            opacity: 0,
-            y: 20,
-            duration: 0.4,
-            ease: "power2.in",
-          },
-          "-=0.2"
-        )
-        .to(
-          "#controls-container-unique",
-          {
-            opacity: 0,
-            scale: 0.8,
-            duration: 0.4,
-            ease: "back.in(1.2)",
-          },
-          "-=0.3"
-        )
-        .to(
-          "#player-title-unique",
-          {
-            opacity: 0,
-            y: 30,
-            duration: 0.4,
-            ease: "power2.in",
-          },
-          "-=0.3"
-        )
-        .to(
-          "#music-player-container-unique",
-          {
-            opacity: 0,
-            y: 50,
-            scale: 0.9,
-            duration: 0.5,
-            ease: "power3.in",
-          },
-          "-=0.3"
-        );
-    }
-
-    // EVENT LISTENERS
-    const playPauseBtn = document.getElementById("playPauseBtn-unique");
-    const prevBtn = document.getElementById("prevBtn-unique");
-    const nextBtn = document.getElementById("nextBtn-unique");
-    const progressBar = document.getElementById("progressBar-unique");
-
-    if (playPauseBtn) {
-      playPauseBtn.addEventListener("click", togglePlayPause);
-    }
-
-    if (prevBtn) {
-      prevBtn.addEventListener("click", previousTrack);
-    }
-
-    if (nextBtn) {
-      nextBtn.addEventListener("click", nextTrack);
-    }
-
-    if (progressBar) {
-      progressBar.addEventListener("input", seekAudio);
-    }
-
-    // OBTENER DURACIÓN REAL DEL AUDIO
-    const audioElement = document.getElementById("music-audio-unique");
-    if (audioElement instanceof HTMLAudioElement) {
-      audioElement.addEventListener("loadedmetadata", () => {
-        duration = audioElement.duration;
-        updateTimeDisplay();
-        console.log(
-          `Duración real: ${Math.floor(duration / 60)}:${Math.floor(
-            duration % 60
-          )
-            .toString()
-            .padStart(2, "0")}`
-        );
-      });
-
-      audioElement.addEventListener("canplaythrough", () => {
-        if (duration === 0 && audioElement.duration) {
-          duration = audioElement.duration;
-          updateTimeDisplay();
-        }
+        ease: "back.out(1.6)",
+        stagger: { each: 0.12, from: "start" }
       });
     }
-  }
 
-  // FUNCIÓN PLAY/PAUSE
-  function togglePlayPause() {
-    const audioElement = document.getElementById("music-audio-unique");
-    const playIcon = document.getElementById("play-icon-unique");
-    const pauseIcon = document.getElementById("pause-icon-unique");
-    const heartBtn = document.getElementById("playPauseBtn-unique");
-
-    if (!(audioElement instanceof HTMLAudioElement)) {
-      console.log("No se encontró el elemento de audio");
-      return;
-    }
-
-    const audio = audioElement;
-
-    if (!isPlaying) {
-      audio.play().catch((error) => console.log("Error al reproducir:", error));
-
-      if (playIcon) playIcon.classList.add("hidden");
-      if (pauseIcon) pauseIcon.classList.remove("hidden");
-
-      gsap.to(heartBtn, {
-        scale: 1.2,
-        duration: 0.2,
-        yoyo: true,
-        repeat: 1,
-        ease: "power2.out",
-      });
-
-      createHeartParticles();
-
-      isPlaying = true;
-      startProgress();
-    } else {
-      audio.pause();
-
-      if (playIcon) playIcon.classList.remove("hidden");
-      if (pauseIcon) pauseIcon.classList.add("hidden");
-
-      isPlaying = false;
-    }
-  }
-
-  // CREAR PARTÍCULAS DE CORAZÓN
-  function createHeartParticles() {
-    const container = document.getElementById("heart-particles-unique");
-    if (!container) return;
-
-    for (let i = 0; i < 6; i++) {
-      const particle = document.createElement("div");
-      particle.innerHTML = "💖";
-      particle.style.cssText = `
-      position: absolute;
-      font-size: 12px;
-      pointer-events: none;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-    `;
-
-      container.appendChild(particle);
-
-      gsap.to(particle, {
-        opacity: 1,
-        scale: 1.5,
-        x: (Math.random() - 0.5) * 100,
-        y: (Math.random() - 0.5) * 100,
-        rotation: Math.random() * 360,
-        duration: 0.8,
-        ease: "power2.out",
-        delay: i * 0.1,
-        onComplete: () => {
-          gsap.to(particle, {
-            opacity: 0,
-            scale: 0.5,
-            duration: 0.4,
-            onComplete: () => particle.remove(),
-          });
-        },
-      });
-    }
-  }
-
-  // FUNCIONES ADICIONALES
-  function previousTrack() {
-    console.log("Canción anterior");
-    gsap.to("#prevBtn-unique", {
-      scale: 1.2,
-      duration: 0.1,
-      yoyo: true,
-      repeat: 1,
+    // SCROLLTRIGGER - El Hero aparece inmediatamente (está al inicio)
+    // Pero mantenemos ScrollTrigger para consistencia con otros componentes
+    heroScrollTrigger = ScrollTrigger.create({
+      trigger: "section",
+      start: "top 100%",
+      end: "bottom top",
+      
+      invalidateOnRefresh: true,
+      anticipatePin: 1,
+      fastScrollEnd: true,
+      
+      onEnter: () => {
+        console.log('✨ Hero apareciendo...');
+        animateHeroIn();
+      },
+      
+      once: true // Solo anima una vez al entrar
     });
-  }
 
-  function nextTrack() {
-    console.log("Siguiente canción");
-    gsap.to("#nextBtn-unique", {
-      scale: 1.2,
-      duration: 0.1,
-      yoyo: true,
-      repeat: 1,
-    });
-  }
-
-  function seekAudio() {
-    const progressBarElement = document.getElementById("progressBar-unique");
-    const audioElement = document.getElementById("music-audio-unique");
-
-    if (
-      progressBarElement instanceof HTMLInputElement &&
-      audioElement instanceof HTMLAudioElement
-    ) {
-      const value = Number(progressBarElement.value) || 0;
-      const seekTime = (value / 100) * audioElement.duration;
-
-      audioElement.currentTime = seekTime;
-      currentTime = seekTime;
-      updateTimeDisplay();
-    }
-  }
-
-  function startProgress() {
-    const audioElement = document.getElementById("music-audio-unique");
-
-    if (!(audioElement instanceof HTMLAudioElement)) return;
-
-    const interval = setInterval(() => {
-      if (!isPlaying) {
-        clearInterval(interval);
-        return;
-      }
-
-      currentTime = audioElement.currentTime;
-      duration = audioElement.duration || duration;
-
-      if (currentTime >= duration) {
-        isPlaying = false;
-        const playIcon = document.getElementById("play-icon-unique");
-        const pauseIcon = document.getElementById("pause-icon-unique");
-        if (playIcon) playIcon.classList.remove("hidden");
-        if (pauseIcon) pauseIcon.classList.add("hidden");
-        clearInterval(interval);
-      }
-
-      updateProgress();
-    }, 100);
-  }
-
-  function updateProgress() {
-    const progressBarElement = document.getElementById("progressBar-unique");
-
-    if (progressBarElement instanceof HTMLInputElement) {
-      const progressBar = progressBarElement;
-      const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
-      progressBar.value = progress.toString();
-    }
-    updateTimeDisplay();
-  }
-
-  function updateTimeDisplay() {
-    const currentTimeEl = document.getElementById("currentTime-unique");
-    const totalDurationEl = document.getElementById("totalDuration-unique");
-    const audioElement = document.getElementById("music-audio-unique");
-
-    if (audioElement instanceof HTMLAudioElement) {
-      if (currentTimeEl) {
-        const minutes = Math.floor(audioElement.currentTime / 60);
-        const seconds = Math.floor(audioElement.currentTime % 60);
-        currentTimeEl.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
-      }
-
-      if (totalDurationEl && audioElement.duration) {
-        const totalMinutes = Math.floor(audioElement.duration / 60);
-        const totalSeconds = Math.floor(audioElement.duration % 60);
-        totalDurationEl.textContent = `${totalMinutes}:${totalSeconds.toString().padStart(2, "0")}`;
-      } else if (totalDurationEl && duration > 0) {
-        const totalMinutes = Math.floor(duration / 60);
-        const totalSeconds = Math.floor(duration % 60);
-        totalDurationEl.textContent = `${totalMinutes}:${totalSeconds.toString().padStart(2, "0")}`;
-      }
-    }
+    // Como el Hero está al inicio, también ejecutamos la animación inmediatamente
+    animateHeroIn();
   }
 
   // INICIALIZACIÓN CON MÚLTIPLES EVENTOS
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMusicPlayer);
+    document.addEventListener('DOMContentLoaded', initHeroAnimations);
   } else {
-    initMusicPlayer();
+    initHeroAnimations();
   }
 
-  // Refresh después de que todo cargue (importante para Vercel)
+  // Refresh después de que todo cargue
   window.addEventListener('load', () => {
     setTimeout(() => {
       ScrollTrigger.refresh();
-      console.log("🔄 ScrollTrigger refreshed después de cargar");
+      console.log("🔄 ScrollTrigger refreshed - Hero");
     }, 100);
   });
 
   // Cleanup al salir
   window.addEventListener('beforeunload', () => {
-    if (scrollTriggerInstance) {
-      scrollTriggerInstance.kill();
+    if (heroScrollTrigger) {
+      heroScrollTrigger.kill();
     }
+    flowerAnimations.forEach(anim => anim.kill());
+    butterflyAnimations.forEach(anim => anim.kill());
   });
 </script>
 
 <style>
-  #player-card-unique {
-    backdrop-filter: blur(25px);
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.25),
-      rgba(255, 255, 255, 0.1)
-    );
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow:
-      0 4px 12px rgba(0, 0, 0, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.5);
-  }
-
-  .slider-elegant {
-    background: linear-gradient(
-      to right,
-      rgba(149, 48, 58, 0.3),
-      rgba(149, 48, 58, 0.1)
-    );
-    outline: none;
-    border-radius: 15px;
-  }
-
-  .slider-elegant::-webkit-slider-thumb {
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #95303a, #b83f52);
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(149, 48, 58, 0.3);
-    border: 3px solid rgba(255, 255, 255, 0.8);
+  .letra-cascada-hero {
     transition: all 0.3s ease;
+    will-change: transform, opacity, filter;
+    position: relative;
   }
 
-  .slider-elegant::-webkit-slider-thumb:hover {
-    transform: scale(1.2);
-    box-shadow: 0 4px 12px rgba(149, 48, 58, 0.5);
-  }
-
-  .slider-elegant::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #95303a, #b83f52);
-    cursor: pointer;
-    border: 3px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 2px 8px rgba(149, 48, 58, 0.3);
-  }
-
-  @keyframes heartbeat {
-    0%,
-    100% {
-      transform: scale(1);
-    }
-    25% {
-      transform: scale(1.1);
-    }
-    50% {
-      transform: scale(1.05);
-    }
-    75% {
-      transform: scale(1.15);
-    }
-  }
-
-  #playPauseBtn-unique:hover {
-    animation: heartbeat 1.5s ease-in-out infinite;
-  }
-
-  button:not(#playPauseBtn-unique):hover {
-    transform: translateY(-2px) scale(1.05);
-  }
-
-  #player-card-unique::before {
-    content: "";
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(
-      45deg,
-      rgba(149, 48, 58, 0.1),
-      transparent,
-      rgba(149, 48, 58, 0.1)
-    );
-    border-radius: inherit;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  #player-card-unique:hover::before {
-    opacity: 1;
-  }
-
-  @media (max-width: 640px) {
-    #player-card-unique {
-      margin: 1rem;
-      padding: 1.5rem;
-    }
+  .letra-cascada-hero:hover {
+    transform: translateY(-3px) scale(1.05) !important;
+    text-shadow: 0 0 12px rgba(162, 119, 53, 0.5) !important;
   }
 </style>
